@@ -82,11 +82,65 @@ void	stack_b_creator(int len,t_stack *stack_b)
 	stack_b->size = -1;
 }
 
+void print(t_stack a,t_stack b,int len)
+{
+	int i = 0;
+	// if(a.size > b.size)
+	// {
+	// 	while (i < a.size)
+	// 	{
+	// 		printf("%d \t %d\n",a.stack[i].nbr,b.stack[i].nbr);
+	// 		i++;
+	// 	}
+	// 	printf("a \t b\n");
+	// }
+	// else
+	// {
+	// 	while (i < b.size)
+	// 	{
+	// 		printf("%d \t||\t %d\n",a.stack[i].nbr,b.stack[i].nbr);
+	// 		i++;
+	// 	}
+	// 	printf("a \t b\n");
+	// }
+	while (i < len)
+		{
+			printf("%d \t %d\n",a.stack[i].nbr,b.stack[i].nbr);
+			i++;
+		}
+}
+void sort_big(t_stack *a,t_stack *b)
+{
+	int i;
+	int len;
+	int max;
+	// int index;
+	// int tmp;
 
-// void sort100(t_stack *stack_a,t_stack *stack_b)
-// {
-	
-// }
+	len = a->size;
+	max = len;
+	i = 0;
+	while (i < len)
+	{
+		if (a->stack[0].pos < i)
+		{
+			pb(a->stack,b->stack,&a->size,&b->size);
+			rb(b->stack,b->size);
+			i++;
+		}
+		else if (a->stack[0].pos < i + 15)
+		{
+			pb(a->stack,b->stack,&a->size,&b->size);
+			i++;
+		}
+		else
+		{
+			ra(a->stack,a->size);
+		}
+	}
+	print(*a,*b,len - 1);
+	max--;
+}
 
 int main(int ac, char *av[])
 {
@@ -114,6 +168,7 @@ int main(int ac, char *av[])
 	stack_a_creator(tab,tab_sorted,stack_a.size,&stack_a);
 	stack_b_creator(stack_a.size,&stack_b);
 	i = 0;
+	sort_big(&stack_a,&stack_b);
 	// while (i < stack_a.size)
 	// {
 	// 	printf("%d \t %d\n",stack_a.stack[i].nbr,stack_a.stack[i].pos);
@@ -128,7 +183,7 @@ int main(int ac, char *av[])
 	// sa(stack_a.stack,stack_a.size);
 	// sort100(&stack_a,&stack_b);
 	// rra(stack_a.stack,stack_a.size);
-	sort3(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
+	// sort3(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
 	// i = 0;
 	// while (i < stack_a.size)
 	// {
