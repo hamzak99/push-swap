@@ -58,21 +58,32 @@ void	sort3(t_element *a, t_element *b, int lenA, int lenB)
 	(void)lenB;
 	(void)b;
 	if (a[0].nbr >= a[1].nbr && a[1].nbr <= a[2].nbr && a[0].nbr <= a[2].nbr)
-		sa(a, lenA);
-	if (a[0].nbr >= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr >= a[2].nbr)
 	{
+		printf("(1)");
+		sa(a, lenA);
+	}
+	else if (a[0].nbr >= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr >= a[2].nbr)
+	{
+		printf("(2)");
 		sa(a, lenA);
 		rra(a, lenA);
 	}
-	if (a[0].nbr >= a[1].nbr && a[1].nbr <= a[2].nbr && a[0].nbr >= a[2].nbr)
-		ra(a, lenA);
-	if (a[0].nbr <= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr <= a[2].nbr)
+	else if (a[0].nbr >= a[1].nbr && a[1].nbr <= a[2].nbr && a[0].nbr >= a[2].nbr)
 	{
+		printf("(3)");
+		ra(a, lenA);
+	}
+	else if (a[0].nbr <= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr <= a[2].nbr)
+	{
+		printf("(4)");
 		sa(a, lenA);
 		ra(a, lenA);
 	}
-	if (a[0].nbr <= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr >= a[2].nbr)
+	else if (a[0].nbr <= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr >= a[2].nbr)
+	{	
+		printf("(5)");
 		rra(a, lenA);
+	}
 }
 
 // void	swap2(int *a, int *b, int *lenA, int *lenB)

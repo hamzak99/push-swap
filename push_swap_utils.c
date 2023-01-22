@@ -15,21 +15,21 @@
 void	sa(t_element *tab, int len)
 {
 	t_element	tmp;
-
+	(void)len;
 	printf("sa\n");
-	tmp = tab[len - 1];
-	tab[len - 1] = tab[len - 2];
-	tab[len - 2] = tmp;
+	tmp = tab[0];
+	tab[0] = tab[1];
+	tab[1] = tmp;
 }
 
 void	sb(t_element *b, int len)
 {
 	t_element	tmp;
-
+	(void)len;
 	printf("sb\n");
-	tmp = b[len - 1];
-	b[len - 1] = b[len - 2];
-	b[len - 2] = tmp;
+	tmp = b[0];
+	b[0] = b[1];
+	b[1] = tmp;
 }
 
 void	ss(t_element *a, t_element *b, int top_a, int top_b)

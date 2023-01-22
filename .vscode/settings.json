@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "chrono": "c"
+        "chrono": "c",
+        "algorithm": "c",
+        "random": "c"
     }
 }
