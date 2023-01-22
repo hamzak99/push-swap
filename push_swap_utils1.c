@@ -91,7 +91,7 @@ void	rrb(t_element *b, int top_b)
 	t_element	tmp;
 
 	printf("rrb\n");
-	tmp = b[top_b - 1];
+	tmp = b[top_b];
 	i = 0;
 	while (0 < top_b)
 	{
