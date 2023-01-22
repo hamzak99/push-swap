@@ -109,13 +109,31 @@ void print(t_stack a,t_stack b,int len)
 			i++;
 		}
 }
+
+int	get_index(t_stack *arr)
+{
+	int i = 0;
+	int max = arr->stack[0].nbr;
+	int ind = 0;
+	while (i < arr->size)
+	{
+		if(arr->stack[i].nbr >= max)
+		{
+			max = arr->stack[i].nbr;
+			ind = i;
+		}
+		i++;
+	}
+	printf("max -> %d \t ind-> %d\n",max,ind);
+	return(ind);
+}
 void sort_big(t_stack *a,t_stack *b)
 {
 	int i;
 	int len;
 	int max;
-	// int index;
-	// int tmp;
+	int index;
+	int tmp;
 
 	len = a->size;
 	max = len;
@@ -137,11 +155,56 @@ void sort_big(t_stack *a,t_stack *b)
 		{
 			ra(a->stack,a->size);
 		}
+		// print(*a,*b,len);
+		// printf("----------------------\n");
+		// printf("----------------------\n");
+		// printf("----------------------\n");
 	}
-	print(*a,*b,len - 1);
+	print(*a,*b,len );
 	max--;
+	while (max >= 0)
+	{
+		printf("b[len]->%d\n",b->stack[b->size].nbr);
+		index = get_index(b);
+		tmp = b->stack[index].nbr;
+		// printf("ind-> %d \t maxN -> %d\n",index,max);
+		if(index < (b->size / 2))
+		{
+			while (b->stack[0].nbr != tmp)
+			{
+				// print(*a,*b,len);
+				// printf("----------------------\n");
+				// printf("----------------------\n");
+				// printf("----------------------\n");
+				rb(b->stack,b->size);
+				printf("b[len]->%d\n",b->stack[b->size].nbr);
+			}
+		}
+		else
+		{
+			while (b->stack[0].nbr != tmp)
+			{
+				// print(*a,*b,len);
+				// printf("----------------------\n");
+				// printf("----------------------\n");
+				// printf("----------------------\n");
+				rrb(b->stack,b->size);
+				printf("b[len]->%d\n",b->stack[b->size].nbr);
+			}
+		}
+		print(*a,*b,len);
+		printf("{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{}}}}}}}}}}}\n");
+		pa(a->stack,b->stack,&a->size,&b->size);
+		max--;
+		
+	}
+	print(*a,*b,len);
 }
 
+// void sort15(t_stack *a,t_stack *b)
+// {
+// 	int max;
+// }
 int main(int ac, char *av[])
 {
 	t_stack stack_a;

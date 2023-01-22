@@ -26,7 +26,7 @@ void remplir_0(t_element *arr)
 void	pa(t_element *a, t_element *b, int *top_a, int *top_b)
 {
 	int	i;
-
+	t_element tmp = b[0];
 	printf("pa\n");
 	*top_a += 1;
 	i = *top_a;
@@ -35,7 +35,6 @@ void	pa(t_element *a, t_element *b, int *top_a, int *top_b)
 		a[i] = a[i - 1];
 		i--;
 	}
-	a[0] = b[0];
 	i = 0;
 	while (i < *top_b)
 	{
@@ -43,13 +42,14 @@ void	pa(t_element *a, t_element *b, int *top_a, int *top_b)
 		i++;
 	}
 	remplir_0(&b[*top_b]);
+	a[0] = tmp;
 	*top_b -= 1;
 }
 
 void	pb(t_element *a, t_element *b, int *top_a, int *top_b)
 {
 	int	i;
-
+	t_element tmp = a[0];
 	printf("pb\n");
 	*top_b += 1;
 	i = *top_b;
@@ -58,7 +58,6 @@ void	pb(t_element *a, t_element *b, int *top_a, int *top_b)
 		b[i] = b[i - 1];
 		i--;
 	}
-	b[0] = a[0];
 	i = 0;
 	while (i < *top_a)
 	{
@@ -66,6 +65,7 @@ void	pb(t_element *a, t_element *b, int *top_a, int *top_b)
 		i++;
 	}
 	remplir_0(&a[*top_a]);
+	b[0] = tmp;
 	*top_a -= 1;
 }
 
