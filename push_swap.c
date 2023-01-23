@@ -136,19 +136,23 @@ void sort_big(t_stack *a,t_stack *b)
 	int max;
 	int index;
 	int tmp;
-
+	// int cnt = 0;
 	len = a->size;
 	max = len;
 	i = 0;
 	while (i < len)
 	{
+		// printf("----------------------\n");
+		// printf("----------------------\n");
+		// printf("len->%d\n",cnt++);
+		// printf("lenA-> %d \t lenB-> %d\n",a->size,b->size);
 		if (a->stack[0].pos < i)
 		{
 			pb(a->stack,b->stack,&a->size,&b->size);
 			rb(b->stack,b->size);
 			i++;
 		}
-		else if (a->stack[0].pos < i + 30)
+		else if (a->stack[0].pos < i + 15)
 		{
 			pb(a->stack,b->stack,&a->size,&b->size);
 			i++;
@@ -158,8 +162,7 @@ void sort_big(t_stack *a,t_stack *b)
 			ra(a->stack,a->size);
 		}
 		// print(*a,*b,len);
-		// printf("----------------------\n");
-		// printf("----------------------\n");
+		// print(*a,*b,len);
 		// printf("----------------------\n");
 	}
 	max--;
@@ -222,7 +225,7 @@ void sort15(t_stack *a,t_stack *b)
 	// int max;
 	int index;
 	int tmp;
-	// int len = a->size;
+	int len = a->size;
 	while (a->size > 0)
 	{
 		index = get_index(a);
@@ -246,7 +249,7 @@ void sort15(t_stack *a,t_stack *b)
 		pb(a->stack,b->stack,&a->size,&b->size);
 		
 	}
-	// print(*a,*b,len );
+	print(*a,*b,len);
 }
 int main(int ac, char *av[])
 {
@@ -277,12 +280,12 @@ int main(int ac, char *av[])
 	if(ac - 1 == 3)
 		sort3(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
 	else if(ac - 1 == 5)
-		sort3(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
+		sort5(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
 	else if(ac - 1 <= 15)
 		sort15(&stack_a,&stack_b);
 	else if(ac - 1 > 15)
 		sort_big(&stack_a,&stack_b);
-	print(stack_a,stack_b,len);
+	// print(stack_a,stack_b,len);
 	// sort15(&stack_a,&stack_b);
 	// while (i < stack_a.size)
 	// {

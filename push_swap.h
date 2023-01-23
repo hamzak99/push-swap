@@ -42,10 +42,10 @@ void		rrb(t_element *b, int top_b);
 void		rrr(t_element *a, t_element *b, int top_a, int top_b);
 
 //////swap5 and 3
-int		bigestone(int *a, int len);
-int		smalestone(int *a, int len);
+int		bigestone(t_element *a, int len);
+int		smalestone(t_element *a, int len);
 void	sort3(t_element *a, t_element *b, int lenA, int lenB);
-void	sort5(int *a, int *b, int lenA, int lenB);
+void	sort5(t_element *a, t_element *b, int lenA, int lenB);
 void	sortless10(int *a, int *b, int lenA, int lenB);
 //swap more 10
 void	ft_bzero(void *s, size_t n);

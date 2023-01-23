@@ -46,8 +46,9 @@ void	ra(t_element *a, int top_a)
 
 	printf("ra\n");
 	tmp = a[0];
+	
 	i = 0;
-	while (i <= top_a)
+	while (i <= top_a - 1)
 	{
 		a[i] = a[i + 1];
 		i++;
@@ -63,12 +64,24 @@ void	rb(t_element *b, int top_b)
 	{
 		printf("rb\n");
 		tmp = b[0];
+		// printf("tmp->%d\n",tmp.nbr);
 		i = 0;
-		while (i <= top_b - 1)
+		while (i <= top_b)
 		{
+			// printf("a[0]->%d\n",b[0].nbr);
+			// printf("a[1]->%d\n",b[1].nbr);
+			// printf("a[2]->%d\n",b[2].nbr);
+			// printf("a[3]->%d\n",b[3].nbr);
+			// printf("a[4]->%d\n",b[4].nbr);
+			// printf("a[5]->%d\n",b[5].nbr);
+			// printf("a[6]->%d\n",b[6].nbr);
+			// printf("a[7]->%d\n",b[7].nbr);
+			// printf("--------------\n");
+			// printf("--------------\n");
 			b[i] = b[i + 1];
 			i++;
 		}
-		b[top_b - 1] = tmp;
+		// printf("index->%d \n",i);
+		b[top_b] = tmp;
 	}
 }
