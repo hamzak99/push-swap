@@ -7,17 +7,31 @@ void swap(int *a,int *b)
 	*a = *b;
 	*b = c;
 }
-
+int *copy(int *tab,int len)
+{
+	int i;
+	int *tab_sorted;
+	tab_sorted = malloc((len) * sizeof(int));
+	i = 0;
+	// (void)tab_sotred;
+	// (void)tab;
+	// (void)len;
+	// printf(" %d \t ",len);
+	// printf("%d",tab[0]);
+	while (i < len)
+	{
+		// printf("\ntab->%d\n",tab[i]);
+		tab_sorted[i] = tab[i];
+		i++;
+	}
+	return tab_sorted;
+}
 void sort_tab(int *tab,int len)
 {
 	int i = 0;
 	int x;
 	int j;
 	i = 0;
-	// while (i< len)
-	// {
-	//     printf("%d\n",tab[i++]);
-	// }
 	while (i < len - 1)
 	{
 		j = 0;
@@ -52,14 +66,8 @@ void	stack_a_creator(int *tab,int *tab_sorted,int len,t_stack *stack_a)
 		i++;
 	}
 	i = 0;
-	// while (j < len)
-	// {
-	// 	printf("%d\n",stack_a.stack[j++].nbr);
-	// }
-	// printf("%d \t %d\n %d",tab[i],tab_sorted[j],len);
 	while (i < len)
 	{
-		// printf("()");
 		j = 0;
 		while (j < len)
 		{
@@ -70,11 +78,6 @@ void	stack_a_creator(int *tab,int *tab_sorted,int len,t_stack *stack_a)
 		i++;		
 	}
 	j = 0;
-	// while (j < len)
-	// {
-	// 	printf("%d \t %d\n",stack_a->stack[j].pos , stack_a->stack[j].nbr);
-	// 	j++;
-	// }
 }
 void	stack_b_creator(int len,t_stack *stack_b)
 {
@@ -104,10 +107,10 @@ void print(t_stack a,t_stack b,int len)
 	// 	printf("a \t b\n");
 	// }
 	while (i < len)
-		{
-			printf("%d \t %d\n",a.stack[i].nbr,b.stack[i].nbr);
-			i++;
-		}
+	{
+		printf("%d \t %d\n",a.stack[i].nbr,b.stack[i].nbr);
+		i++;
+	}
 }
 
 int	get_index(t_stack *arr)
@@ -124,71 +127,43 @@ int	get_index(t_stack *arr)
 		}
 		i++;
 	}
-	// printf("i>%d\n",i);
-	// printf("b[len-%d]->%d\n",arr->size,arr->stack[arr->size].nbr);
-	// printf("max -> %d \t ind-> %d\n",max,ind);
 	return(ind);
 }
-void sort_big(t_stack *a,t_stack *b)
+void push_b(t_stack *a,t_stack *b, int range,int len)
 {
+	// int len;
 	int i;
-	int len;
-	int max;
-	int index;
-	int tmp;
-	// int cnt = 0;
-	len = a->size;
-	max = len;
+
 	i = 0;
 	while (i < len)
 	{
-		// printf("----------------------\n");
-		// printf("----------------------\n");
-		// printf("len->%d\n",cnt++);
-		// printf("lenA-> %d \t lenB-> %d\n",a->size,b->size);
 		if (a->stack[0].pos < i)
 		{
 			pb(a->stack,b->stack,&a->size,&b->size);
 			rb(b->stack,b->size);
 			i++;
 		}
-		else if (a->stack[0].pos < i + 15)
+		else if (a->stack[0].pos < i + range)
 		{
 			pb(a->stack,b->stack,&a->size,&b->size);
 			i++;
 		}
 		else
-		{
 			ra(a->stack,a->size);
-		}
-		// print(*a,*b,len);
-		// print(*a,*b,len);
-		// printf("----------------------\n");
 	}
-	max--;
+}
+void push_back(t_stack *a, t_stack *b, int max)
+{
+	int tmp;
+	int index;
 	while (max >= 0)
 	{
-		// b->stack[b->size].nbr = last;
-		// printf("b[len-%d]->%d\n",b->size,b->stack[b->size].nbr);
-		// printf("lenB->%d\n",b->size);
 		index = get_index(b);
 		tmp = b->stack[index].nbr;
-		// printf("ind-> %d \t maxN -> %d\n",index,max);
 		if(index < (b->size / 2))
 		{
 			while (b->stack[0].nbr != tmp)
 			{
-				// printf("b[0]->%d\n",b->stack[0].nbr);
-				// printf("b[0]->%d \n ",b->stack[0].nbr);
-				// printf("b[1]->%d \n ",b->stack[1].nbr);
-				// printf("b[2]->%d \n ",b->stack[2].nbr);
-				// printf("b[3]->%d \n ",b->stack[3].nbr);
-				// printf("b[4]->%d \n ",b->stack[4].nbr);
-				// print(*a,*b,len);
-				// printf("----------------------\n");
-				// printf("----------------------\n");
-				// printf("----------------------\n");
-				// b->stack[b->size].nbr = last;
 				rb(b->stack,b->size);
 			}
 		}
@@ -196,33 +171,73 @@ void sort_big(t_stack *a,t_stack *b)
 		{
 			while (b->stack[0].nbr != tmp)
 			{
-				// printf("b[0]->%d\n",b->stack[0].nbr);
-				// print(*a,*b,len);
-				// printf("b[0]->%d \n ",b->stack[0].nbr);
-				// printf("b[1]->%d \n ",b->stack[1].nbr);
-				// printf("b[2]->%d \n ",b->stack[2].nbr);
-				// printf("b[3]->%d \n ",b->stack[3].nbr);
-				// printf("b[4]->%d \n ",b->stack[4].nbr);
-				// printf("----------------------\n");
-				// printf("----------------------\n");
-				// printf("----------------------\n");
-				// b->stack[b->size].nbr = last;
 				rrb(b->stack,b->size);
-				// printf("b[len]->%d\n",b->stack[b->size].nbr);
 			}
 		}
-		// printf("b[len-%d]->%d\n",b->size,b->stack[b->size].nbr);
-		// print(*a,*b,len);
-		// printf("{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{}}}}}}}}}}}\n");
 		pa(a->stack,b->stack,&a->size,&b->size);
 		max--;
-		
 	}
-	// print(*a,*b,len);
+}
+void sort_big(t_stack *a,t_stack *b,int range)
+{
+	// int i;
+	int len;
+	int max;
+	// int index;
+	// int tmp;
+
+	len = a->size;
+	max = len;
+	if(range == 1)
+		range = 3;
+	if(range == 2)
+		range = 15;
+	else if(range == 3)
+		range = 30;
+	// i = 0;
+	push_b(a,b,range,len);
+	max--;
+	push_back(a,b,max);
+	// while (i < len)
+	// {
+	// 	if (a->stack[0].pos < i)
+	// 	{
+	// 		pb(a->stack,b->stack,&a->size,&b->size);
+	// 		rb(b->stack,b->size);
+	// 		i++;
+	// 	}
+	// 	else if (a->stack[0].pos < i + 15)
+	// 	{
+	// 		pb(a->stack,b->stack,&a->size,&b->size);
+	// 		i++;
+	// 	}
+	// 	else
+	// 		ra(a->stack,a->size);
+	// }
+	// while (max >= 0)
+	// {
+	// 	index = get_index(b);
+	// 	tmp = b->stack[index].nbr;
+	// 	if(index < (b->size / 2))
+	// 	{
+	// 		while (b->stack[0].nbr != tmp)
+	// 		{
+	// 			rb(b->stack,b->size);
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		while (b->stack[0].nbr != tmp)
+	// 		{
+	// 			rrb(b->stack,b->size);
+	// 		}
+	// 	}
+	// 	pa(a->stack,b->stack,&a->size,&b->size);
+	// 	max--;
+	// }
 }
 void sort15(t_stack *a,t_stack *b)
 {
-	// int max;
 	int index;
 	int tmp;
 	int len = a->size;
@@ -234,7 +249,6 @@ void sort15(t_stack *a,t_stack *b)
 		{
 			while (a->stack[0].nbr != tmp)
 			{
-				// print(*a,*b,len );
 				ra(a->stack,a->size);
 			}
 		}
@@ -242,7 +256,6 @@ void sort15(t_stack *a,t_stack *b)
 		{
 			while (a->stack[0].nbr != tmp)
 			{
-				// print(*a,*b,len );
 				rra(a->stack,a->size);
 			}
 		}
@@ -251,63 +264,245 @@ void sort15(t_stack *a,t_stack *b)
 	}
 	print(*a,*b,len);
 }
+
+
+
+
+////checker
+int check_num(char *av)
+{
+	int i;
+
+	i = 0;
+	while (av[i] != '\0')
+	{
+		if(!((av[i] >= '0' && av[i] <= '9') || av[i] == ' ' || av[i] == '-' || av[i] == '+'))
+			return 0;
+		i++;
+	}
+	return 1;
+}
+
+char	*ft_strrchr(const char *str, int c)
+{
+	int	i;
+
+	i = ft_strlen(str);
+	if (!(char)c)
+		return ((char *)str + i);
+	while (i >= 0)
+	{
+		if (str[i] == (char)c)
+			return ((char *)str + i);
+		i--;
+	}
+	return (0);
+}
+int check_if_all_num(char **av, int ac, int *len)
+{
+	int i;
+	int k;
+	char **str;
+	i = 1;
+	while (i < ac)
+	{
+		k = 0;
+		if(check_num(av[i]) == 0)
+			return 0;
+		if(ft_strrchr(av[i], ' '))
+		{
+			str = ft_split(av[i],' ');
+			while (str[k] != NULL)
+				k++;
+			(*len)+= k;
+		}
+		else
+			(*len)++;
+		i++;
+	}
+	return 1;
+}
+void remplir_a(int ac,char **av,int *vars,int *len)
+{
+	int i;
+	int j;
+	int k;
+	char **str;
+	(void)len;
+
+	i = 1;
+	k = 0;
+	while (i < ac)
+	{
+		if(ft_strrchr(av[i], ' '))
+		{
+			j = 0;
+			str = ft_split(av[i], ' ');
+			while (str[j] != NULL)
+				vars[k++] = ft_atoi(str[j++]);
+		}
+		else
+			vars[k++] = ft_atoi(av[i]);
+		i++;
+	}
+	// *len = k - 1;
+}
+int check_if_sorted(int *vars, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		if( vars[i] > INT_MAX)
+			return 0;
+		if( vars[i] > vars[i + 1])
+			return 0;
+		// else if(vars[i] < vars[i + 1])
+		i++;
+	}
+	return 1;
+}
+int check_if_repet(int *vars,int len)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < len)
+	{
+		j = 0 ;
+		while (j < len)
+		{
+			if(vars[i] == vars[j] && i != j)
+				return 1;
+			j++;
+		}
+		i++;
+	}
+	return 0;
+}
+// int check_repeat(int *tab,int ac,char **av)
+// {
+// 	int len;
+// 	remplir_a(ac,av,tab,&len);
+// 	if(check_if_sorted(tab,len) || !check_if_repet(tab,len))
+// 		return 0;
+// 	return 1;
+// }
+
+int checker(char **av, int ac,int **tab,int *len)
+{
+	int i;
+	// int len = 0;
+	i = 0;
+	if(check_if_all_num(av,ac,len) == 0)
+	{
+		printf("ERROR");
+		return 0;
+	}
+	// printf("\nlen->%d",*len);
+	*tab = malloc((*len) * sizeof(int));
+	remplir_a(ac,av,*tab,len);
+	// printf("\nlen->%d\n",*len);
+	// printf("a[0]->%d\n",tab[0]);
+	// printf("a[1]->%d\n",tab[1]);
+	// printf("a[2]->%d\n",tab[2]);
+	// printf("a[3]->%d\n",tab[3]);
+	// printf("a[4]->%d\n",tab[4]);
+	// printf("a[5]->%d\n",tab[5]);
+	if(check_if_sorted(*tab,*len))
+	{
+		// printf("sorted");
+		return 0;
+	}
+	if(check_if_repet(*tab,*len))
+	{
+		printf("ERROR");
+		return 0;
+	}
+	// if(check_repeat(tab,ac,av))
+	// 	return 1;
+	// free(vars->a);
+	// free(vars->b);
+	return 1;
+}
+
+void sorting(int *tab,int len)
+{
+	t_stack a;
+	t_stack b;
+	int *tab_sorted;
+	(void)tab;
+	b.size = -1;
+	a.size = len;
+	tab_sorted=copy(tab,len);
+	sort_tab(tab_sorted,len);
+	stack_a_creator(tab,tab_sorted,a.size,&a);
+	stack_b_creator(a.size,&b);
+	if(len == 2)
+		sa(a.stack,len);
+	if(len == 3)
+		sort3(a.stack,b.stack,a.size,b.size);
+	else if(len == 5)
+		sort5(a.stack,b.stack,a.size,b.size);
+	else if(len <= 15)
+		sort_big(&a,&b,1);
+	else if(len <= 100)
+		sort_big(&a,&b,2);
+	else if(len > 100)
+		sort_big(&a,&b,3);
+}
+
 int main(int ac, char *av[])
 {
-	t_stack stack_a;
-	t_stack stack_b;
-	int *tab;
-	int *tab_sorted;
-	int i = 1;
+	// t_stack stack_a;
+	// t_stack stack_b;
+	int *tab = NULL;
+	// int *tab_sorted;
+	// int i = 1;
 
 	(void)av;
 	int len;
 	len = ac - 1;
-	stack_a.size  = len;
-	stack_b.size = -1;
-	
-	tab = malloc(stack_a.size * sizeof(int));
-	tab_sorted = malloc(stack_a.size * sizeof(int));
-	while (i <= stack_a.size)
+	// printf("%d\n",len);
+	len =0;
+	// stack_a.size  = len;
+	// stack_b.size = -1;
+	// printf("\n%d",checker(av,ac,tab));
+	if(checker(av,ac,&tab,&len) == 0)
 	{
-		tab[i - 1] = ft_atoi(av[i]);
-		tab_sorted[i - 1] = ft_atoi(av[i]);
-		i++;
+		// free(tab);
+		return 0;
 	}
-	sort_tab(tab_sorted,stack_a.size);
-	stack_a_creator(tab,tab_sorted,stack_a.size,&stack_a);
-	stack_b_creator(stack_a.size,&stack_b);
-	i = 0;
-	if(ac - 1 == 3)
-		sort3(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
-	else if(ac - 1 == 5)
-		sort5(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
-	else if(ac - 1 <= 15)
-		sort15(&stack_a,&stack_b);
-	else if(ac - 1 > 15)
-		sort_big(&stack_a,&stack_b);
-	// print(stack_a,stack_b,len);
-	// sort15(&stack_a,&stack_b);
-	// while (i < stack_a.size)
+	// printf("a[0]->%d\n",tab[0]);
+	// printf("a[1]->%d\n",tab[1]);
+	// printf("a[2]->%d\n",tab[2]);
+	// printf("a[3]->%d\n",tab[3]);
+	// printf("a[4]->%d\n",tab[4]);
+	// printf("a[5]->%d\n",tab[5]);
+	// printf("\n%d",len);
+	sorting(tab,len);
+	// tab = malloc(stack_a.size * sizeof(int));
+	// tab_sorted = malloc(stack_a.size * sizeof(int));
+	// while (i <= stack_a.size)
 	// {
-	// 	printf("%d \t %d\n",stack_a.stack[i].nbr,stack_a.stack[i].pos);
+	// 	tab[i - 1] = ft_atoi(av[i]);
+	// 	tab_sorted[i - 1] = ft_atoi(av[i]);
 	// 	i++;
 	// }
-	// printf("------------AFTER---------------\n");
-	// t_stack tmp;
-	// tmp.stack = (t_element *)malloc(1 * sizeof(t_element));
-	// tmp.stack[0] = stack_a.stack[0];
-	// tmp.stack[0].pos = stack_a.stack[1].pos;
-	// printf("%d \t %d\n",tmp.stack[0].nbr,tmp.stack[0].pos);
-	// sa(stack_a.stack,stack_a.size);
-	// sort100(&stack_a,&stack_b);
-	// rra(stack_a.stack,stack_a.size);
-	// sort3(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
+	// sort_tab(tab_sorted,stack_a.size);
+	// stack_a_creator(tab,tab_sorted,stack_a.size,&stack_a);
+	// stack_b_creator(stack_a.size,&stack_b);
 	// i = 0;
-	// while (i < stack_a.size)
-	// {
-	// 	printf("%d \t %d\n",stack_a.stack[i].nbr,stack_a.stack[i].pos);
-	// 	i++;
-	// }
+	// if(ac - 1 == 3)
+	// 	sort3(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
+	// else if(ac - 1 == 5)
+	// 	sort5(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
+	// else if(ac - 1 <= 15)
+	// 	sort15(&stack_a,&stack_b);
+	// else if(ac - 1 > 15)
+	// 	sort_big(&stack_a,&stack_b);
 
 	return 0;
 }

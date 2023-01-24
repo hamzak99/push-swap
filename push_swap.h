@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <limits.h>
 
 typedef struct s_element
 {
@@ -51,6 +52,8 @@ void	sortless10(int *a, int *b, int lenA, int lenB);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int	ft_atoi(const char *str);
+size_t	ft_strlen(const char *s);
+char	**ft_split(char *s, char c);
 
 
 #endif
