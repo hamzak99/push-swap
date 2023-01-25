@@ -5,9 +5,9 @@ flags = -Wall -Wextra -Werror
 
 
 src = push_swap.c push_swap_utils.c  push_swap_utils1.c \
-		push_func.c ft_split.c swap_3_5.c
-# srcB = bonus.c swap_3_5.c swapmore10.c	push_swap_utils.c  push_swap_utils1.c \
-# 	push_func.c ft_split.c checker.c
+		push_func.c ft_split.c swap_3_5.c leaks_checker.c
+srcB = bonus.c push_swap.c swap_3_5.c 	push_swap_utils.c  push_swap_utils1.c \
+	push_func.c ft_split.c 
 
 obj = $(src:.c=.o)
 objB = $(srcB:.c=.o)

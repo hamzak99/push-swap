@@ -13,14 +13,8 @@ int *copy(int *tab,int len)
 	int *tab_sorted;
 	tab_sorted = malloc((len) * sizeof(int));
 	i = 0;
-	// (void)tab_sotred;
-	// (void)tab;
-	// (void)len;
-	// printf(" %d \t ",len);
-	// printf("%d",tab[0]);
 	while (i < len)
 	{
-		// printf("\ntab->%d\n",tab[i]);
 		tab_sorted[i] = tab[i];
 		i++;
 	}
@@ -56,8 +50,6 @@ void	stack_a_creator(int *tab,int *tab_sorted,int len,t_stack *stack_a)
 {
 	int i; 
 	int j;
-	(void)tab_sorted;
-	(void)tab;
 	stack_a->stack = (t_element *)malloc(len * sizeof(t_element));
 	i = 0;
 	while (i < len)
@@ -401,19 +393,10 @@ int checker(char **av, int ac,int **tab,int *len)
 		printf("ERROR");
 		return 0;
 	}
-	// printf("\nlen->%d",*len);
 	*tab = malloc((*len) * sizeof(int));
 	remplir_a(ac,av,*tab,len);
-	// printf("\nlen->%d\n",*len);
-	// printf("a[0]->%d\n",tab[0]);
-	// printf("a[1]->%d\n",tab[1]);
-	// printf("a[2]->%d\n",tab[2]);
-	// printf("a[3]->%d\n",tab[3]);
-	// printf("a[4]->%d\n",tab[4]);
-	// printf("a[5]->%d\n",tab[5]);
 	if(check_if_sorted(*tab,*len))
 	{
-		// printf("sorted");
 		return 0;
 	}
 	if(check_if_repet(*tab,*len))
@@ -421,13 +404,15 @@ int checker(char **av, int ac,int **tab,int *len)
 		printf("ERROR");
 		return 0;
 	}
-	// if(check_repeat(tab,ac,av))
-	// 	return 1;
-	// free(vars->a);
-	// free(vars->b);
 	return 1;
 }
-
+void freeall(t_stack *a,t_stack *b,int **tab,int **tab_sorted)
+{
+	free(a->stack);
+	free(b->stack);
+	free(*tab);
+	free(*tab_sorted);
+}
 void sorting(int *tab,int len)
 {
 	t_stack a;
@@ -442,7 +427,7 @@ void sorting(int *tab,int len)
 	stack_b_creator(a.size,&b);
 	if(len == 2)
 		sa(a.stack,len);
-	if(len == 3)
+	else if(len == 3)
 		sort3(a.stack,b.stack,a.size,b.size);
 	else if(len == 5)
 		sort5(a.stack,b.stack,a.size,b.size);
@@ -452,57 +437,23 @@ void sorting(int *tab,int len)
 		sort_big(&a,&b,2);
 	else if(len > 100)
 		sort_big(&a,&b,3);
+	freeall(&a,&b,&tab,&tab_sorted);
+
 }
+void check_leaks();
+// int main(int ac, char *av[])
+// {
+// 	int *tab = NULL;
 
-int main(int ac, char *av[])
-{
-	// t_stack stack_a;
-	// t_stack stack_b;
-	int *tab = NULL;
-	// int *tab_sorted;
-	// int i = 1;
+// 	int len;
+// 	len =0;
+// 	if(checker(av,ac,&tab,&len) == 0)
+// 	{
+// 		free(tab);
+// 		return 0;
+// 	}
+// 	sorting(tab,len);
+// 	check_leaks();
 
-	(void)av;
-	int len;
-	len = ac - 1;
-	// printf("%d\n",len);
-	len =0;
-	// stack_a.size  = len;
-	// stack_b.size = -1;
-	// printf("\n%d",checker(av,ac,tab));
-	if(checker(av,ac,&tab,&len) == 0)
-	{
-		// free(tab);
-		return 0;
-	}
-	// printf("a[0]->%d\n",tab[0]);
-	// printf("a[1]->%d\n",tab[1]);
-	// printf("a[2]->%d\n",tab[2]);
-	// printf("a[3]->%d\n",tab[3]);
-	// printf("a[4]->%d\n",tab[4]);
-	// printf("a[5]->%d\n",tab[5]);
-	// printf("\n%d",len);
-	sorting(tab,len);
-	// tab = malloc(stack_a.size * sizeof(int));
-	// tab_sorted = malloc(stack_a.size * sizeof(int));
-	// while (i <= stack_a.size)
-	// {
-	// 	tab[i - 1] = ft_atoi(av[i]);
-	// 	tab_sorted[i - 1] = ft_atoi(av[i]);
-	// 	i++;
-	// }
-	// sort_tab(tab_sorted,stack_a.size);
-	// stack_a_creator(tab,tab_sorted,stack_a.size,&stack_a);
-	// stack_b_creator(stack_a.size,&stack_b);
-	// i = 0;
-	// if(ac - 1 == 3)
-	// 	sort3(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
-	// else if(ac - 1 == 5)
-	// 	sort5(stack_a.stack,stack_b.stack,stack_a.size,stack_b.size);
-	// else if(ac - 1 <= 15)
-	// 	sort15(&stack_a,&stack_b);
-	// else if(ac - 1 > 15)
-	// 	sort_big(&stack_a,&stack_b);
-
-	return 0;
-}
+// 	return 0;
+// }
