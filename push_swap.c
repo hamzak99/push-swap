@@ -121,15 +121,48 @@ int	get_index(t_stack *arr)
 	}
 	return(ind);
 }
+int check_if_in_down(t_stack *a,int ind,int range)
+{
+	(void)ind;
+	int len = a->size;
+	int i = a->size - range;
+	while(i < len)
+	{
+		if(a->stack[i].nbr > a->stack[i + 1].nbr)
+			i++;
+		else
+			return 0;
+	}
+	i = a->size - range;
+	
+	return 1;
+}
+
+void push_range(t_stack  *a,t_stack *b,int range)
+{
+	int len  = a->size;
+	int i = a->size - range;
+	while (i < len)
+	{
+		rra(a->stack,a->size);
+		pb(a->stack,b->stack,&a->size,&b->size);
+		i++;
+	}
+	
+}
+
 void push_b(t_stack *a,t_stack *b, int range,int len)
 {
-	// int len;
 	int i;
-
 	i = 0;
 	while (i < len)
 	{
-		if (a->stack[0].pos < i)
+		if(check_if_in_down(a,i,range))
+		{
+			push_range(a,b,range);
+			i += range;
+		}
+		else if (a->stack[0].pos < i)
 		{
 			pb(a->stack,b->stack,&a->size,&b->size);
 			rb(b->stack,b->size);
@@ -172,11 +205,8 @@ void push_back(t_stack *a, t_stack *b, int max)
 }
 void sort_big(t_stack *a,t_stack *b,int range)
 {
-	// int i;
 	int len;
 	int max;
-	// int index;
-	// int tmp;
 
 	len = a->size;
 	max = len;
@@ -441,19 +471,19 @@ void sorting(int *tab,int len)
 
 }
 void check_leaks();
-// int main(int ac, char *av[])
-// {
-// 	int *tab = NULL;
+int main(int ac, char *av[])
+{
+	int *tab = NULL;
 
-// 	int len;
-// 	len =0;
-// 	if(checker(av,ac,&tab,&len) == 0)
-// 	{
-// 		free(tab);
-// 		return 0;
-// 	}
-// 	sorting(tab,len);
-// 	check_leaks();
+	int len;
+	len =0;
+	if(checker(av,ac,&tab,&len) == 0)
+	{
+		free(tab);
+		return 0;
+	}
+	sorting(tab,len);
+	check_leaks();
 
-// 	return 0;
-// }
+	return 0;
+}

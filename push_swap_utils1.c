@@ -75,7 +75,7 @@ void	rra(t_element *a, int top_a)
 	t_element	tmp;
 
 	printf("rra\n");
-	tmp = a[top_a - 1];
+	tmp = a[top_a];
 	i = 0;
 	while (0 < top_a)
 	{
