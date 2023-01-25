@@ -49,7 +49,8 @@ int		bigestone(t_element *a, int len);
 int		smalestone(t_element *a, int len);
 void	sort3(t_element *a, t_element *b, int lenA, int lenB);
 void	sort5(t_element *a, t_element *b, int lenA, int lenB);
-void	sortless10(int *a, int *b, int lenA, int lenB);
+void 	sort15(t_stack *a,t_stack *b);
+void sort_big(t_stack *a,t_stack *b,int range);
 //swap more 10
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
@@ -57,21 +58,7 @@ int	ft_atoi(const char *str);
 size_t	ft_strlen(const char *s);
 int	ft_strncmp(const char *str1, const char *str2, size_t n);
 char	**ft_split(char *s, char c);
+char	*ft_strrchr(const char *str, int c);
 
 
 #endif
-
-
-
-
-//void		sa(int *tab, int len, char c);
-//void		sb(int *b, int len, char c);
-//void		ss(int *a, int *b, int top_a, int top_b);
-//void		pa(int *a, int *b, int *top_a, int *top_b);
-//void		pb(int *a, int *b, int *top_a, int *top_b);
-//void		ra(int *a, int top_a, char c);
-//void		rb(int *b, int top_b, char c);
-//void		rr(int *a, int *b, int top_a, int top_b);
-//void		rra(int *a, int top_a);
-//void		rrb(int *b, int top_b);
-//void		rrr(int *a, int *b, int top_a, int top_b);
