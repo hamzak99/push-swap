@@ -52,11 +52,11 @@ static int	space(char str)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
+	long	i;
 	int	sign;
-	int	rsl;
+	long	rsl;
 
 	rsl = 0;
 	i = 0;

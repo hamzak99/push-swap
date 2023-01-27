@@ -73,7 +73,13 @@ void	stack_a_creator(int *tab,int *tab_sorted,int len,t_stack *stack_a)
 }
 void	stack_b_creator(int len,t_stack *stack_b)
 {
+	int i = 0;
 	stack_b->stack = (t_element *)malloc(len * sizeof(t_element));
+	while (i < len)
+	{
+		stack_b->stack[i++].nbr = 0;
+	}
+	
 	stack_b->size = -1;
 }
 
@@ -397,23 +403,16 @@ int main(int ac, char *av[])
 {
 	int *tab;
 	int len;
-	t_stack a;
-	t_stack b;
 	tab = NULL;
 	len = 0;
-	int k;
-	if((k =checker(av,ac,&tab,&len)) == 0)
+	if(checker(av,ac,&tab,&len) == 0)
 	{
-		// printf("k-%d\n",k);
 		free(tab);
 		return 0;
 	}
-	// printf("k-%d\n",k);
 	if(len == 1 || len == 0)
 		return 0;
-	b.size = -1;
-	a.size = len;
 	sorting( tab, len);
-	// check_leaks();
+	check_leaks();
 	return 0;
 }
