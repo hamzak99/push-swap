@@ -4,9 +4,9 @@ NAME_B = checker
 flags = -Wall -Wextra -Werror
 
 
-src = push_swap.c push_swap_utils.c  push_swap_utils1.c \
-		push_func.c ft_split.c check_args.c sort_big.c swap_3_5.c leaks_checker.c
-srcB = bonus.c check_args.c swap_3_5.c 	push_swap_utils.c  push_swap_utils1.c \
+src = push_swap.c push_swap_utils.c  push_swap_utils1.c check_args1.c  remplire_stack.c\
+		push_func.c ft_split.c check_args.c sort_big.c swap_3_5.c leaks_checker.c sort_big_helper.c
+srcB = bonus.c check_args.c check_args1.c utils_bonus.c push_swap_utils.c  push_swap_utils1.c remplire_stack.c\
 	push_func.c ft_split.c 
 
 obj = $(src:.c=.o)
@@ -17,7 +17,7 @@ all: $(NAME)
 
 $(NAME):  $(obj) push_swap.h
 	cc $(flags) $(obj) -o $(NAME)
-bonus: $(objB) push_swap.h
+bonus: $(objB) push_bonus.h
 	cc $(flags) $(objB) -o $(NAME_B)
 %.o: %.c push_swap.h
 	$(CC) -Wall -Wextra -Werror -c $< -o $@

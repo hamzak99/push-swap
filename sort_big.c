@@ -1,17 +1,5 @@
 #include "push_swap.h"
 
-void push_range(t_stack  *a,t_stack *b,int range)
-{
-	int len  = a->size;
-	int i = a->size - range;
-	while (i < len)
-	{
-		rra(a->stack,a->size);
-		pb(a->stack,b->stack,&a->size,&b->size);
-		i++;
-	}
-}
-
 int	get_index(t_stack *arr)
 {
 	int i = 0;
@@ -29,21 +17,30 @@ int	get_index(t_stack *arr)
 	return(ind);
 }
 
-int check_if_in_down(t_stack *a,int ind,int range)
+void sort15(t_stack *a,t_stack *b)
 {
-	(void)ind;
-	int len = a->size;
-	int i = a->size - range;
-	while(i < len)
+	int index;
+	int tmp;
+
+	while (a->size > 0)
 	{
-		if(a->stack[i].nbr > a->stack[i + 1].nbr)
-			i++;
+		index = get_index(a);
+		tmp = a->stack[index].nbr;
+		if(index < (a->size / 2))
+		{
+			while (a->stack[0].nbr != tmp)
+				ra(a->stack,a->size);
+		}
 		else
-			return 0;
+		{
+			while (a->stack[0].nbr != tmp)
+				rra(a->stack,a->size);
+		}
+		pb(a->stack,b->stack,&a->size,&b->size);
 	}
-	i = a->size - range;
-	return 1;
 }
+
+	
 
 void push_b(t_stack *a,t_stack *b, int range,int len)
 {
@@ -92,29 +89,6 @@ void push_back(t_stack *a, t_stack *b, int max)
 		}
 		pa(a->stack,b->stack,&a->size,&b->size);
 		max--;
-	}
-}
-
-void sort15(t_stack *a,t_stack *b)
-{
-	int index;
-	int tmp;
-
-	while (a->size > 0)
-	{
-		index = get_index(a);
-		tmp = a->stack[index].nbr;
-		if(index < (a->size / 2))
-		{
-			while (a->stack[0].nbr != tmp)
-				ra(a->stack,a->size);
-		}
-		else
-		{
-			while (a->stack[0].nbr != tmp)
-				rra(a->stack,a->size);
-		}
-		pb(a->stack,b->stack,&a->size,&b->size);
 	}
 }
 
