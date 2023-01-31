@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils1.c                                 :+:      :+:    :+:   */
+/*   utils_bonus1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 22:57:21 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/28 20:22:44 by hkasbaou         ###   ########.fr       */
+/*   Created: 2023/01/29 15:26:17 by hkasbaou          #+#    #+#             */
+/*   Updated: 2023/01/31 21:52:34 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rr(t_element *a, t_element *b, int top_a, int top_b)
-{
-	printf("rr\n");
-	ra(a, top_a);
-	rb(b, top_b);
-}
-
-void	pa(t_element *a, t_element *b, int *top_a, int *top_b)
+void	pa_b(t_element *a, t_element *b, int *top_a, int *top_b)
 {
 	int			i;
 	t_element	tmp;
 
 	tmp = b[0];
-	printf("pa\n");
 	*top_a += 1;
 	i = *top_a;
 	while (i > 0)
@@ -44,13 +36,12 @@ void	pa(t_element *a, t_element *b, int *top_a, int *top_b)
 	*top_b -= 1;
 }
 
-void	pb(t_element *a, t_element *b, int *top_a, int *top_b)
+void	pb_b(t_element *a, t_element *b, int *top_a, int *top_b)
 {
 	int			i;
 	t_element	tmp;
 
 	tmp = a[0];
-	printf("pb\n");
 	*top_b += 1;
 	i = *top_b;
 	while (i > 0)
@@ -69,12 +60,11 @@ void	pb(t_element *a, t_element *b, int *top_a, int *top_b)
 	*top_a -= 1;
 }
 
-void	rra(t_element *a, int top_a)
+void	rra_b(t_element *a, int top_a)
 {
 	int			i;
 	t_element	tmp;
 
-	printf("rra\n");
 	tmp = a[top_a];
 	i = 0;
 	while (0 < top_a)
@@ -85,12 +75,11 @@ void	rra(t_element *a, int top_a)
 	a[0] = tmp;
 }
 
-void	rrb(t_element *b, int top_b)
+void	rrb_b(t_element *b, int top_b)
 {
 	int			i;
 	t_element	tmp;
 
-	printf("rrb\n");
 	tmp = b[top_b];
 	i = 0;
 	while (0 < top_b)
@@ -99,4 +88,10 @@ void	rrb(t_element *b, int top_b)
 		top_b--;
 	}
 	b[0] = tmp;
+}
+
+void	rrr_b(t_element *a, t_element *b, int top_a, int top_b)
+{
+	rra_b(a, top_a);
+	rrb_b(b, top_b);
 }

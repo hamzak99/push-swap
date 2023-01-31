@@ -1,17 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   swap_3_5.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 23:04:52 by hkasbaou          #+#    #+#             */
-/*   Updated: 2022/11/20 23:44:40 by hkasbaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "push_swap.h"
-// 
+//
 int	bigestone(t_element *a, int len)
 {
 	int	i;
@@ -59,19 +49,23 @@ void	sort3(t_element *a, t_element *b, int lenA, int lenB)
 	(void)b;
 	if (a[0].nbr >= a[1].nbr && a[1].nbr <= a[2].nbr && a[0].nbr <= a[2].nbr)
 		sa(a, lenA);
-	else if (a[0].nbr >= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr >= a[2].nbr)
+	else if (a[0].nbr >= a[1].nbr && a[1].nbr >= a[2].nbr
+		&& a[0].nbr >= a[2].nbr)
 	{
 		sa(a, lenA);
 		rra(a, lenA);
 	}
-	else if (a[0].nbr >= a[1].nbr && a[1].nbr <= a[2].nbr && a[0].nbr >= a[2].nbr)
+	else if (a[0].nbr >= a[1].nbr && a[1].nbr <= a[2].nbr
+		&& a[0].nbr >= a[2].nbr)
 		ra(a, lenA);
-	else if (a[0].nbr <= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr <= a[2].nbr)
+	else if (a[0].nbr <= a[1].nbr && a[1].nbr >= a[2].nbr
+		&& a[0].nbr <= a[2].nbr)
 	{
 		sa(a, lenA);
 		ra(a, lenA);
 	}
-	else if (a[0].nbr <= a[1].nbr && a[1].nbr >= a[2].nbr && a[0].nbr >= a[2].nbr)
+	else if (a[0].nbr <= a[1].nbr && a[1].nbr >= a[2].nbr
+		&& a[0].nbr >= a[2].nbr)
 		rra(a, lenA);
 }
 

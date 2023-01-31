@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:55:24 by hkasbaou          #+#    #+#             */
-/*   Updated: 2022/12/11 14:32:22 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:58:51 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	sort5(t_element *a, t_element *b, int lenA, int lenB);
 void sort15(t_stack *a,t_stack *b);
 void sort_big(t_stack *a,t_stack *b,int range);
 int	get_index(t_stack *arr);
+void	remplir_0(t_element *arr);
 //swap more 10
 void	stack_a_creator(int *tab,int *tab_sorted,int len,t_stack *stack_a);
 void	stack_b_creator(int len,t_stack *stack_b);
@@ -81,5 +82,7 @@ void		rr_b(t_element *a, t_element *b, int top_a, int top_b);
 void		rra_b(t_element *a, int top_a);
 void		rrb_b(t_element *b, int top_b);
 void		rrr_b(t_element *a, t_element *b, int top_a, int top_b);
-
+//
+void	remplir_stack_b(int len, t_stack *stack_b);
+void	remplir_stack_a(t_stack *a, int len, int *tab);
 #endif

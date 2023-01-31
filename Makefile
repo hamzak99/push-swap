@@ -5,9 +5,9 @@ flags = -Wall -Wextra -Werror
 
 
 src = push_swap.c push_swap_utils.c  push_swap_utils1.c check_args1.c  remplire_stack.c\
-		push_func.c ft_split.c check_args.c sort_big.c swap_3_5.c leaks_checker.c sort_big_helper.c
-srcB = bonus.c check_args.c check_args1.c utils_bonus.c push_swap_utils.c  push_swap_utils1.c remplire_stack.c\
-	push_func.c ft_split.c 
+		push_func.c ft_split.c check_args.c sort_big.c swap_3_5.c  sort_big_helper.c leaks_checker.c
+srcB = bonus.c check_args.c check_args1.c sort_big_helper.c utils_bonus.c push_swap_utils.c  push_swap_utils1.c remplire_stack.c\
+	push_func.c ft_split.c utils_bonus1.c bonus_helper.c leaks_checker.c
 
 obj = $(src:.c=.o)
 objB = $(srcB:.c=.o)

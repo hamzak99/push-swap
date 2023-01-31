@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_args1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/29 14:53:25 by hkasbaou          #+#    #+#             */
+/*   Updated: 2023/01/29 14:53:26 by hkasbaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 char	*ft_strrchr(const char *str, int c)
@@ -16,9 +28,10 @@ char	*ft_strrchr(const char *str, int c)
 	return (0);
 }
 
-void freestr(char **str)
+void	freestr(char **str)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (str[i] != NULL)
 	{
@@ -27,47 +40,60 @@ void freestr(char **str)
 	free(str);
 }
 
-int chek_max_int(long nbr)
+int	chek_max_int(long nbr)
 {
-	if(nbr > INT_MAX)
-		return 1;
-	return 0;
+	if (nbr > INT_MAX)
+	{
+		printf("ERROR");
+		return (1);
+	}
+	return (0);
 }
 
-int remplir_a(int ac,char **av,int *vars,int *len)
+int	more_than_one(char *str, int **vars, int j, char **spliter)
 {
-	int i;
-	int j;
-	long nbr;
-	int k;
-	char **str;
-	(void)len;
+	static int	k;
+	long		nbr;
 
-	i = 1;
-	k = 0;
-	while (i < ac)
+	if (ft_strrchr(str, ' '))
 	{
-		if(ft_strrchr(av[i], ' '))
+		j = 0;
+		spliter = ft_split(str, ' ');
+		while (spliter[j] != NULL)
 		{
-			j = 0;
-			str = ft_split(av[i], ' ');
-			while (str[j] != NULL)
-			{
-				nbr = ft_atoi(str[j]);
-				if(chek_max_int(nbr))
-					return 0;
-				vars[k++] = ft_atoi(str[j++]);
-			}
-			freestr(str);
+			nbr = ft_atoi(spliter[j]);
+			if (chek_max_int(nbr))
+				return (0);
+			(*vars)[k++] = ft_atoi(spliter[j++]);
 		}
-		else
-		{
-			nbr = ft_atoi(av[i]);
-			if(chek_max_int(nbr))
-					return 0;
-			vars[k++] = ft_atoi(av[i]);
-		}
-		i++;
+		freestr(spliter);
 	}
-	return 1;
+	else
+	{
+		nbr = ft_atoi(str);
+		if (chek_max_int(nbr))
+			return (0);
+		(*vars)[k++] = ft_atoi(str);
+	}
+	return (1);
+}
+
+int	remplir_a(int ac, char **av, int *vars, int *len)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**str;
+
+	(void)len;
+	str = NULL;
+	i = 0;
+	k = 0;
+	while (++i < ac)
+	{
+		j = 0;
+		if (!more_than_one(av[i], &vars, j, str))
+			return (0);
+	}
+	return (1);
 }
