@@ -6,17 +6,18 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 23:02:18 by hkasbaou          #+#    #+#             */
-/*   Updated: 2022/11/17 23:02:42 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/02 21:59:28 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
 void	rrr(t_element *a, t_element *b, int top_a, int top_b)
 {
 	rra(a, top_a);
 	rrb(b, top_b);
-	printf("rrr\n");
+	write(1, "rrr\n", 4);
 }
 
 void	ft_bzero(void *s, size_t n)

@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:26:17 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/31 21:52:34 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/05 17:42:23 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	rra_b(t_element *a, int top_a)
 	int			i;
 	t_element	tmp;
 
-	tmp = a[top_a];
+	tmp = a[top_a - 1];
 	i = 0;
 	while (0 < top_a)
 	{

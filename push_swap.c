@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:21:08 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/28 20:21:09 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/04 20:22:21 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,5 @@ int	main(int ac, char *av[])
 	if (len == 1 || len == 0)
 		return (0);
 	sorting(tab, len);
-	check_leaks();
 	return (0);
 }

@@ -6,11 +6,12 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:25:13 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/29 14:51:36 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/04 00:43:25 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	check_num(char *av)
 {
@@ -59,7 +60,7 @@ int	check_if_sorted(int *vars, int len)
 	int	i;
 
 	i = 0;
-	while (i < len)
+	while (i < len - 1)
 	{
 		if (vars[i] > vars[i + 1] && (i + 1) != len)
 			return (0);
@@ -98,18 +99,18 @@ int	checker(char **av, int ac, int **tab, int *len)
 	i = 0;
 	if (check_if_all_num(av, ac, len) == 0)
 	{
-		printf("ERROR");
+		write(1, "ERROR", 5);
 		return (0);
 	}
 	*tab = malloc((*len) * sizeof(int));
 	if (!remplir_a(ac, av, *tab, len))
 		return (0);
 	if (tru == 0)
-		if (check_if_sorted(*tab, *len) && tru == 1)
+		if (check_if_sorted(*tab, *len))
 			return (0);
 	if (check_if_repet(*tab, *len))
 	{
-		printf("ERROR");
+		write(1, "ERROR", 5);
 		return (0);
 	}
 	return (1);

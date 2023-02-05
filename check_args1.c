@@ -6,11 +6,12 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:53:25 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/29 14:53:26 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/04 22:56:43 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
 char	*ft_strrchr(const char *str, int c)
 {
@@ -44,7 +45,7 @@ int	chek_max_int(long nbr)
 {
 	if (nbr > INT_MAX)
 	{
-		printf("ERROR");
+		write(1, "ERROR", 5);
 		return (1);
 	}
 	return (0);
@@ -64,7 +65,7 @@ int	more_than_one(char *str, int **vars, int j, char **spliter)
 			nbr = ft_atoi(spliter[j]);
 			if (chek_max_int(nbr))
 				return (0);
-			(*vars)[k++] = ft_atoi(spliter[j++]);
+			(*vars)[k++] = (int)ft_atoi(spliter[j++]);
 		}
 		freestr(spliter);
 	}
@@ -73,12 +74,12 @@ int	more_than_one(char *str, int **vars, int j, char **spliter)
 		nbr = ft_atoi(str);
 		if (chek_max_int(nbr))
 			return (0);
-		(*vars)[k++] = ft_atoi(str);
+		(*vars)[k++] = (int)ft_atoi(str);
 	}
 	return (1);
 }
 
-int	remplir_a(int ac, char **av, int *vars, int *len)
+int	remplir_a(int ac, char **av, int *tab, int *len)
 {
 	int		i;
 	int		j;
@@ -92,7 +93,7 @@ int	remplir_a(int ac, char **av, int *vars, int *len)
 	while (++i < ac)
 	{
 		j = 0;
-		if (!more_than_one(av[i], &vars, j, str))
+		if (!more_than_one(av[i], &tab, j, str))
 			return (0);
 	}
 	return (1);

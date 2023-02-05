@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:16:12 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/29 17:16:13 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:37:29 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	remplir_stack_a(t_stack *a, int len, int *tab)
 
 	i = 0;
 	a->size = len;
-	a->stack = malloc(len * sizeof(int));
+	a->stack = malloc(len * sizeof(t_element));
 	while (i < len)
 	{
 		a->stack[i].nbr = tab[i];
@@ -45,7 +45,7 @@ void	remplir_stack_b(int len, t_stack *stack_b)
 	int	i;
 
 	i = 0;
-	stack_b->stack = (t_element *)malloc(len * sizeof(t_element));
+	stack_b->stack = malloc(len * sizeof(t_element));
 	while (i < len)
 	{
 		stack_b->stack[i++].nbr = 0;

@@ -1,7 +1,17 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap_3_5.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/02 21:07:38 by hkasbaou          #+#    #+#             */
+/*   Updated: 2023/02/04 19:32:50 by hkasbaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
-//
+
 int	bigestone(t_element *a, int len)
 {
 	int	i;
@@ -26,20 +36,25 @@ int	smalestone(t_element *a, int len)
 {
 	int	i;
 	int	min;
+	int	ind;
 	int	j;
 
 	i = 0;
 	min = a[0].nbr;
+	ind = 0;
 	j = 0;
 	while (i < len)
 	{
 		if (a[i].nbr == 0)
 			a[i].nbr = 0;
 		else if (min > a[i].nbr)
+		{
 			min = a[i].nbr;
+			ind = i;
+		}
 		i++;
 	}
-	return (min);
+	return (ind);
 }
 
 void	sort3(t_element *a, t_element *b, int lenA, int lenB)
@@ -78,26 +93,25 @@ void	swap2(t_element *a, t_element *b, int *lenA, int *lenB)
 
 void	sort5(t_element *a, t_element *b, int lenA, int lenB)
 {
-	int	min;
-	int	max;
 	int	i;
 
-	i = 0;
-	min = smalestone(a, lenA);
-	while (a[0].nbr != min)
-		ra(a, lenA);
+	i = smalestone(a, lenA);
+	if (i < 2)
+		while (i-- > 0)
+			ra(a, lenA);
+	else
+		while (i++ < lenA)
+			rra(a, lenA);
 	pb(a, b, &lenA, &lenB);
-	min = smalestone(a, lenA);
-	max = bigestone(a, lenA);
-	while (min != a[i].nbr && a[i].nbr != max)
-		ra(a, lenA);
+	i = smalestone(a, lenA);
+	if (i < 2)
+		while (i-- > 0)
+			ra(a, lenA);
+	else
+		while (i++ < lenA)
+			rra(a, lenA);
 	pb(a, b, &lenA, &lenB);
 	sort3(a, b, lenA, lenB);
-	if (b[0].nbr == min)
-	{
-		pa(a, b, &lenA, &lenB);
-		pa(a, b, &lenA, &lenB);
-	}
-	if (b[0].nbr == max)
-		swap2(a, b, &lenA, &lenB);
+	pa(a, b, &lenA, &lenB);
+	pa(a, b, &lenA, &lenB);
 }

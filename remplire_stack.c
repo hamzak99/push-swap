@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:19:37 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/28 20:19:38 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/03 23:58:27 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	stack_a_creator(int *tab, int *tab_sorted, int len, t_stack *stack_a)
 	{
 		j = -1;
 		while (++j < len)
-			if (tab[i] == tab_sorted[j])
+			if (stack_a->stack[i].nbr == tab_sorted[j])
 				stack_a->stack[i].pos = j;
 	}
 	stack_a->size = len;

@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:18:58 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/28 20:24:32 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/02 21:54:57 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ int	check_if_in_down(t_stack *a, int ind, int range)
 	return (1);
 }
 
-void	print(t_stack a, t_stack b, int len)
-{
-	int	i;
+// void	print(t_stack a, t_stack b, int len)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < len)
-	{
-		printf("%d \t %d\n", a.stack[i].nbr, b.stack[i].nbr);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		printf("%d \t %d\n", a.stack[i].nbr, b.stack[i].nbr);
+// 		i++;
+// 	}
+// }
 
 void	remplir_0(t_element *arr)
 {

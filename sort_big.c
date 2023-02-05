@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:17:05 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/01/28 20:17:06 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:43:32 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	push_b(t_stack *a, t_stack *b, int range, int len)
 			push_range(a, b, range);
 			i += range;
 		}
-		else if (a->stack[0].pos < i)
+		else if (a->stack[0].pos <= i)
 		{
 			pb(a->stack, b->stack, &a->size, &b->size);
 			rb(b->stack, b->size);
@@ -117,7 +117,7 @@ void	sort_big(t_stack *a, t_stack *b, int range)
 	max = len;
 	if (range == 1)
 		range = 3;
-	if (range == 2)
+	else if (range == 2)
 		range = 15;
 	else if (range == 3)
 		range = 30;
