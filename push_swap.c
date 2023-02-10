@@ -6,11 +6,12 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:21:08 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/04 20:22:21 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:13:17 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	swap(int *a, int *b)
 {

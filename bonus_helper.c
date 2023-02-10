@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:16:12 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/05 19:37:29 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/10 15:17:59 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	remplir_stack_b(int len, t_stack *stack_b)
 	stack_b->size = -1;
 }
 
-void	rr_b(t_element *a, t_element *b, int top_a, int top_b)
+void	rrr_b(t_element *a, t_element *b, int top_a, int top_b)
 {
-	ra(a, top_a);
-	rb(b, top_b);
+	rra_b(a, top_a);
+	rrb_b(b, top_b);
 }

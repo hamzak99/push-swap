@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:18:33 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/05 17:44:42 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/10 15:13:00 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	sa_b(t_element *tab, int len)
 	t_element	tmp;
 
 	(void)len;
-	tmp = tab[0];
-	tab[0] = tab[1];
-	tab[1] = tmp;
+	if (len >= 2)
+	{
+		tmp = tab[0];
+		tab[0] = tab[1];
+		tab[1] = tmp;
+	}
 }
 
 void	sb_b(t_element *b, int len)
@@ -27,9 +30,12 @@ void	sb_b(t_element *b, int len)
 	t_element	tmp;
 
 	(void)len;
-	tmp = b[0];
-	b[0] = b[1];
-	b[1] = tmp;
+	if (len >= 1)
+	{
+		tmp = b[0];
+		b[0] = b[1];
+		b[1] = tmp;
+	}
 }
 
 void	ss_b(t_element *a, t_element *b, int top_a, int top_b)
@@ -43,14 +49,17 @@ void	ra_b(t_element *a, int top_a)
 	int			i;
 	t_element	tmp;
 
-	tmp = a[0];
-	i = 0;
-	while (i <= top_a - 1)
+	if (top_a >= 2)
 	{
-		a[i] = a[i + 1];
-		i++;
+		tmp = a[0];
+		i = 0;
+		while (i <= top_a - 1)
+		{
+			a[i] = a[i + 1];
+			i++;
+		}
+		a[top_a - 1] = tmp;
 	}
-	a[top_a - 1] = tmp;
 }
 
 void	rb_b(t_element *b, int top_b)
@@ -58,7 +67,7 @@ void	rb_b(t_element *b, int top_b)
 	int			i;
 	t_element	tmp;
 
-	if (top_b >= 0)
+	if (top_b >= 1)
 	{
 		tmp = b[0];
 		i = 0;

@@ -6,11 +6,12 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:53:25 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/04 22:56:43 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:12:37 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 #include <unistd.h>
 
 char	*ft_strrchr(const char *str, int c)
@@ -43,7 +44,7 @@ void	freestr(char **str)
 
 int	chek_max_int(long nbr)
 {
-	if (nbr > INT_MAX)
+	if (nbr > INT_MAX || nbr < INT_MIN)
 	{
 		write(1, "ERROR", 5);
 		return (1);

@@ -6,17 +6,27 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:25:13 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/04 00:43:25 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:17:15 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int	check_num(char *av)
 {
 	int	i;
 
+	i = 0;
+	if (av[0] == '\0')
+		return (0);
+	while (av[i] == ' ')
+	{
+		i++;
+	}
+	if (av[i] == '\0')
+		return (0);
 	i = 0;
 	while (av[i] != '\0')
 	{
