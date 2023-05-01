@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:55:24 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/04 20:15:53 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:08:46 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void			sb(t_element *b, int len);
 void			ss(t_element *a, t_element *b, int top_a, int top_b);
 void			pa(t_element *a, t_element *b, int *top_a, int *top_b);
 void			pb(t_element *a, t_element *b, int *top_a, int *top_b);
-void			ra(t_element *a, int top_a);
-void			rb(t_element *b, int top_b);
+int				ra(t_element *a, int top_a);
+int				rb(t_element *b, int top_b);
 void			rr(t_element *a, t_element *b, int top_a, int top_b);
-void			rra(t_element *a, int top_a);
-void			rrb(t_element *b, int top_b);
+int				rra(t_element *a, int top_a);
+int				rrb(t_element *b, int top_b);
 void			rrr(t_element *a, t_element *b, int top_a, int top_b);
 //
 int				checker(char **av, int ac, int **tab, int *len);

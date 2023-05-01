@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:21:08 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/08 17:13:17 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:30:08 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ void	sorting(int *tab, int len)
 		sort_big(&a, &b, 3);
 	freeall(&a, &b, &tab, &tab_sorted);
 }
-
-void	check_leaks(void);
 
 int	main(int ac, char *av[])
 {

@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:55:37 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/03 22:54:30 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:14:08 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ss(t_element *a, t_element *b, int top_a, int top_b)
 	sb(b, top_b + 1);
 }
 
-void	ra(t_element *a, int top_a)
+int	ra(t_element *a, int top_a)
 {
 	int			i;
 	t_element	tmp;
@@ -64,10 +64,12 @@ void	ra(t_element *a, int top_a)
 			i++;
 		}
 		a[top_a - 1] = tmp;
+		return (1);
 	}
+	return (0);
 }
 
-void	rb(t_element *b, int top_b)
+int	rb(t_element *b, int top_b)
 {
 	int			i;
 	t_element	tmp;
@@ -83,5 +85,7 @@ void	rb(t_element *b, int top_b)
 			i++;
 		}
 		b[top_b] = tmp;
+		return (1);
 	}
+	return (0);
 }

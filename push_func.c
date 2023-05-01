@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 23:02:18 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/02 21:59:28 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:07:59 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,16 @@
 
 void	rrr(t_element *a, t_element *b, int top_a, int top_b)
 {
-	rra(a, top_a);
-	rrb(b, top_b);
-	write(1, "rrr\n", 4);
+	int	n1;
+	int	n2;
+
+	n1 = rra(a, top_a);
+	if (n1 == 1)
+	{
+		n2 = rrb(b, top_b);
+		if (n2 == 1)
+			write(1, "rrr\n", 3);
+	}
 }
 
 void	ft_bzero(void *s, size_t n)

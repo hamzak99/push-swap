@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:26:17 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/10 15:14:32 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:06:49 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	rr_b(t_element *a, t_element *b, int top_a, int top_b)
 {
-	ra(a, top_a);
-	rb(b, top_b);
+	ra_b(a, top_a);
+	rb_b(b, top_b);
 }
 
 void	pa_b(t_element *a, t_element *b, int *top_a, int *top_b)

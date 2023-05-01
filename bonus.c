@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 21:40:52 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/05 19:38:37 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:11:22 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int	if_sorted(t_stack *a)
 	return (0);
 }
 
-void	doo(char *str, t_stack *a, t_stack *b, int len)
+void	doo(char *str, t_stack *a, t_stack *b)
 {
-	(void)len;
 	if (!ft_strncmp(str, "sa", ft_strlen(str)))
 		sa_b(a->stack, a->size);
 	else if (!ft_strncmp(str, "sb", ft_strlen(str)))
@@ -47,6 +46,10 @@ void	doo(char *str, t_stack *a, t_stack *b, int len)
 		pa_b(a->stack, b->stack, &a->size, &b->size);
 	else if (!ft_strncmp(str, "pb", ft_strlen(str)))
 		pb_b(a->stack, b->stack, &a->size, &b->size);
+	else if ((!ft_strncmp(str, "rrr", ft_strlen(str))))
+		rrr_b(a->stack, b->stack, a->size, b->size);
+	else if ((!ft_strncmp(str, "rr", ft_strlen(str))))
+		rr_b(a->stack, b->stack, a->size, b->size);
 	else
 		exit(1);
 }
@@ -69,7 +72,7 @@ void	bonus(t_stack *a, t_stack *b)
 			str[i] = '\0';
 			if (str[0] != '\n')
 			{
-				doo(str, a, b, len);
+				doo(str, a, b);
 				i = 0;
 			}
 		}
@@ -100,7 +103,10 @@ int	main(int ac, char *av[])
 	tab = NULL;
 	len = 1;
 	if (checker(av, ac, &tab, &len) == 0)
+	{
+		free(tab);
 		return (0);
+	}
 	check_bonus(tab, len);
 	free(tab);
 	return (0);

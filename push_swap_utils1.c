@@ -6,7 +6,7 @@
 /*   By: hkasbaou <hkasbaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 22:57:21 by hkasbaou          #+#    #+#             */
-/*   Updated: 2023/02/04 00:28:08 by hkasbaou         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:08:27 by hkasbaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,16 @@
 
 void	rr(t_element *a, t_element *b, int top_a, int top_b)
 {
-	write(1, "rr\n", 3);
-	ra(a, top_a);
-	rb(b, top_b);
+	int	n1;
+	int	n2;
+
+	n1 = ra(a, top_a);
+	if (n1 == 1)
+	{
+		n2 = rb(b, top_b);
+		if (n2 == 1)
+			write(1, "rr\n", 3);
+	}
 }
 
 void	pa(t_element *a, t_element *b, int *top_a, int *top_b)
@@ -70,7 +77,7 @@ void	pb(t_element *a, t_element *b, int *top_a, int *top_b)
 	}
 }
 
-void	rra(t_element *a, int top_a)
+int	rra(t_element *a, int top_a)
 {
 	int			i;
 	t_element	tmp;
@@ -86,10 +93,12 @@ void	rra(t_element *a, int top_a)
 			top_a--;
 		}
 		a[0] = tmp;
+		return (1);
 	}
+	return (0);
 }
 
-void	rrb(t_element *b, int top_b)
+int	rrb(t_element *b, int top_b)
 {
 	int			i;
 	t_element	tmp;
@@ -105,5 +114,7 @@ void	rrb(t_element *b, int top_b)
 			top_b--;
 		}
 		b[0] = tmp;
+		return (1);
 	}
+	return (0);
 }
